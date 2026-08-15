@@ -1,0 +1,60 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7faf5"><link rel="manifest" href="manifest.webmanifest"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><title>MILAN STUDY — تركيز</title><link rel="stylesheet" href="styles.css"></head><body>
+<main class="app">
+<header class="datebar"><button class="arrow" id="prevDay">‹</button><div id="dateText">اليوم</div><button class="arrow" id="nextDay">›</button></header>
+<section class="hero card">
+ <div class="hero-copy"><div class="session-label">جلسة تركيز</div><div class="hero-title">ركز الآن <span class="cap">🎓</span></div><p>ابدأ جلسة تركيز جديدة ووصل لأفضل إنجازاتك.</p><div class="green-line"></div><div class="today-label">جلسات اليوم</div><div class="today-count" id="todayCount">٠</div><button class="start-green" id="heroStart">بدء التركيز <span>◎</span></button></div>
+ <div class="focus-ring" id="focusRing"><div class="ring-inner"><div class="focus-time">FOCUS TIME</div><div class="big-time" id="timer">00:00:00</div><div class="ready" id="timerStatus">جاهز للبدء؟</div><div class="timer-controls"><button id="startBtn" class="timer-action primary"><span class="ctrl-icon">▶</span><span>بدء / استئناف</span></button><button id="pauseBtn" class="timer-action"><span class="ctrl-icon">Ⅱ</span><span>استراحة</span></button><button id="resetBtn" class="timer-action"><span class="ctrl-icon">↻</span><span>إعادة</span></button></div></div></div>
+ <div class="decor leaf">❧</div><div class="decor books">▱<br>▱</div><div class="decor pencils">╱╱╱</div><div class="neon-orb orb-a"></div><div class="neon-orb orb-b"></div>
+</section>
+<section class="live-now card"><div class="live-now-head"><div><span class="live">LIVE</span><h2>يدرسون الآن</h2><p>حتى لو أخذ الطالب استراحة، يبقى ظاهرًا في الترتيب مع حالته ووقته.</p></div><button class="view-all-live" id="viewAllLive">عرض الكل ›</button></div><div class="live-cards" id="liveCards"></div></section>
+<section class="section goals-section"><button class="goals-launch card" id="openTasks"><div class="goals-launch-icon">✓</div><div><h2>أهدافي</h2><p>حوّل أهدافك إلى مهام صغيرة وأنجزها واحدةً تلو الأخرى.</p><div class="goal-progress-line"><span id="goalProgressFill"></span></div><small id="goalProgressText">٠ مهام منجزة</small></div><span class="goals-arrow">‹</span></button></section>
+<section class="section activity-section"><div class="section-title"><h2>نشاطك اليوم <span>✦</span></h2><button class="outline-green" id="openStatsQuick">عرض الإحصائيات ›</button></div><div class="activity-grid card"><div class="activity-stat"><span>◷</span><div><small>درست اليوم</small><b id="homeTodayActivity">٠ س ٠ د</b></div></div><div class="activity-stat"><span>▣</span><div><small>جلسات اليوم</small><b id="homeSessionsActivity">٠</b></div></div><div class="activity-stat"><span>↗</span><div><small>آخر جلسة</small><b id="homeLastSession">—</b></div></div></div></section>
+<section class="section last-session-section"><div class="last-session-card card"><div class="last-session-icon">📚</div><div><small>آخر جلسة</small><h3 id="lastSessionTitle">جاهز لجلسة جديدة؟</h3><p id="lastSessionMeta">ابدأ الآن، وسنتذكر تقدمك تلقائياً.</p></div><button id="lastSessionStart">ابدأ</button></div></section>
+<section class="tasks-page" id="tasksPage" hidden>
+  <header class="tasks-header"><button class="back-tasks" id="closeTasks">‹</button><div><h1>أهدافي ومهامي 🌿</h1><p>نظم مهامك وحقق أهدافك خطوة بخطوة</p></div><div class="tasks-badge">▣</div></header>
+  <section class="task-kpis">
+    <div class="task-kpi done-kpi"><span class="kpi-icon">✓</span><b id="taskDoneCount">٠</b><strong>مكتملة</strong><small>مهام منجزة</small></div>
+    <div class="task-kpi total-kpi"><span class="kpi-icon">☷</span><b id="taskTotalCount">٠</b><strong>إجمالي المهام</strong><small>كل المهام</small></div>
+    <div class="task-kpi remaining-kpi"><span class="kpi-icon">◷</span><b id="taskRemainingCount">٠</b><strong>المتبقية</strong><small>مهام متبقية</small></div>
+    <div class="task-kpi progress-kpi"><div class="task-ring"><span id="taskPercent">0%</span></div><strong>نسبة الإنجاز</strong><small id="taskProgressHint">أنت على الطريق الصحيح!</small></div>
+  </section>
+  <section class="task-add-bar card"><input id="taskTitle" placeholder="اكتب مهمة جديدة..." maxlength="100"><input id="taskSubject" class="task-subject-input" placeholder="المادة" maxlength="50"><button id="addTaskBtn">إضافة مهمة <span>＋</span></button></section>
+  <section class="task-filters"><button class="selected" data-task-filter="all">الكل ▦</button><button data-task-filter="study">الدراسة ♡</button><button data-task-filter="projects">مشاريع ▱</button><button data-task-filter="personal">الشخصي ♙</button></section>
+  <section class="task-list-wrap"><div class="tasks-list-head"><h2>مهامي اليوم</h2><span id="taskCountLabel">٠ مهام</span></div><div id="tasksList" class="tasks-list"></div></section>
+  <section class="task-encourage"><div class="plant">🌱</div><div><b>لا تستسلم!</b><span>كل مهمة تنجزها تقربك من هدفك ⭐</span><small>استمر، أنت تقوم بعمل رائع!</small></div><button id="floatingAddTask">＋</button></section>
+</section>
+<nav class="bottom-nav" id="bottomNav">
+<button data-tab="home" class="active"><span>⌂</span><b>الرئيسية</b></button>
+<button data-tab="friends"><span>♧</span><b>الأصدقاء</b></button>
+<button class="focus-fab" data-tab="focus"><span>＋</span><b>تركيز</b></button>
+<button data-tab="stats"><span>▥</span><b>إحصائيات</b></button>
+<button data-tab="account"><span>♙</span><b>حسابي</b></button>
+</nav>
+<div id="installHint" class="install-hint" hidden><span>✦ ثبّت MILAN على جهازك لتبقى تجربة التركيز أسرع.</span><button id="installBtn">تثبيت</button><button id="installClose">×</button></div><div id="toast" class="toast"></div><div class="mini-timer" id="miniTimer" hidden><div><span class="mini-live-dot"></span><b id="miniTimerText">00:00:00</b><small id="miniTimerState">جلسة مستمرة</small></div><button id="miniResume">▶</button><button id="miniExpand">↗</button></div>
+<div class="chat-page" id="chatPage" hidden>
+  <header class="chat-header">
+    <button class="chat-back" id="chatBack" aria-label="رجوع">‹</button>
+    <div class="chat-person"><img id="chatAvatar" src="assets/profile.svg"><div><h2 id="chatName">المحادثة</h2><span id="chatStatus">غير متصل</span></div></div>
+    <div class="chat-head-actions"><button id="chatVideo" aria-label="مكالمة فيديو">▣</button><button id="chatCall" aria-label="اتصال">☎</button><button id="chatMore" aria-label="المزيد">⋮</button></div>
+  </header>
+  <div class="chat-date" id="chatDate">اليوم</div>
+  <main class="chat-messages" id="chatMessages"></main>
+  <div class="chat-composer-wrap">
+    <div class="chat-composer">
+      <button id="chatAttach" class="composer-icon" aria-label="إرفاق">＋</button>
+      <input id="chatInput" placeholder="اكتب رسالة..." autocomplete="off" maxlength="1000">
+      <button id="chatEmoji" class="composer-icon" aria-label="رموز">☺</button>
+      <button id="chatSend" class="chat-send" aria-label="إرسال">➤</button>
+    </div>
+    <input id="chatFile" type="file" hidden>
+  </div>
+</div>
+
+<div class="modal" id="liveModal"><div class="modal-card wide"><button class="modal-close" data-close="liveModal">×</button><h3>يدرسون الآن <span class="live">LIVE</span></h3><p class="modal-sub">الطلاب يظلون في الترتيب أثناء الاستراحة، وتظهر حالتهم بوضوح.</p><div id="liveList"></div></div></div>
+<div class="modal" id="friendsModal"><div class="modal-card wide"><button class="modal-close" data-close="friendsModal">×</button><div class="modal-heading"><div><h3>الأصدقاء</h3><p class="modal-sub">أضف باليوزر أو بالاسم الكامل المطابق.</p></div><span class="heading-avatar">＋</span></div><div class="add-friend-form"><input id="friendQuery" placeholder="مثال: milan أو أحمد محمد" autocomplete="off"><button id="addFriendBtn">إضافة</button></div><div class="hint">اليوزر فريد ولا يتكرر. الاسم يجب أن يطابق الاسم الكامل.</div><div id="friendsList"></div></div></div>
+<div class="modal" id="accountModal"><div class="modal-card"><button class="modal-close" data-close="accountModal">×</button><div class="account-top"><div><h3>حسابي</h3><p class="modal-sub">غيّر الاسم واليوزر والصورة في أي وقت.</p></div></div><div class="profile-avatar-wrap"><img class="account-avatar" src="assets/profile.svg"><span>✎</span></div><label>الاسم الكامل<input id="profileName"></label><label>اليوزر<input id="profileUsername" placeholder="milan"></label><div class="avatar-label">الصورة من الاستديو</div><div class="avatar-picker" id="avatarPicker"></div><button class="save-profile" id="saveProfile">▣ حفظ التغييرات</button><button class="settings-open-btn" id="openSettings">⚙ الإعدادات والتجربة</button></div></div>
+<div class="modal" id="settingsModal"><div class="modal-card wide settings-card"><button class="modal-close" data-close="settingsModal">×</button><div class="settings-head"><div><span>MILAN • EXPERIENCE</span><h3>الإشعارات والتجربة</h3><p class="modal-sub">خلّي MILAN حيّ، ناعم وتفاعلي بدون إزعاج.</p></div><div class="settings-glow">✦</div></div><div class="settings-list"><label class="switch-row"><span><b>إشعارات الدراسة</b><small>تنبيه عند بدء الجلسة وعند الرجوع للتطبيق.</small></span><input type="checkbox" id="setNotifications"><i></i></label><label class="switch-row"><span><b>أصوات MILAN</b><small>أصوات هادئة للنقر والبدء والاستراحة والإنجاز.</small></span><input type="checkbox" id="setSounds"><i></i></label><label class="switch-row"><span><b>إضاءة تفاعلية</b><small>وهج خفيف يتحرك مع جلسة التركيز والأزرار.</small></span><input type="checkbox" id="setNeon"><i></i></label><label class="switch-row"><span><b>المؤقت المصغر</b><small>عرض نافذة صغيرة أثناء الدراسة عند مغادرة التطبيق.</small></span><input type="checkbox" id="setMini"><i></i></label></div><button class="mini-launch" id="launchMiniTimer">◉ فتح المؤقت المصغر</button><div class="blocker-box"><div class="blocker-head"><div><h4>🛡️ مانع التطبيقات</h4><p>اختر التطبيقات التي تريد تذكيرك بالابتعاد عنها أثناء التركيز.</p></div><input type="checkbox" id="setBlocker"></div><div class="app-choice-grid" id="blockedApps"><button data-app="Instagram">Instagram</button><button data-app="TikTok">TikTok</button><button data-app="Facebook">Facebook</button><button data-app="Snapchat">Snapchat</button><button data-app="YouTube">YouTube</button><button data-app="X">X</button><button data-app="Telegram">Telegram</button><button data-app="WhatsApp">WhatsApp</button></div><small class="blocker-note">ملاحظة: متصفح الويب لا يستطيع حجب تطبيقات النظام الأخرى مباشرة؛ هذا الوضع يفعّل تنبيهات وتركيز داخل MILAN فقط.</small></div><button class="save-profile" id="saveSettings">حفظ الإعدادات</button></div></div>
+<div class="modal" id="friendStatsModal"><div class="modal-card"><button class="modal-close" data-close="friendStatsModal">×</button><div id="friendStatsBody"></div></div></div>
+<div class="modal" id="statsModal"><div class="modal-card wide"><button class="modal-close" data-close="statsModal">×</button><div class="stats-modal-head"><div><span>MILAN • ANALYTICS</span><h3>إحصائياتي</h3><p class="modal-sub">ملخص دراستك وأدائك الدراسي.</p></div><div class="stats-modal-icon">▥</div></div><div class="stats-big-grid personal-stats-grid"><div><small>اليوم</small><strong id="modalTodayStat">٠ س ٠ د</strong></div><div><small>هذا الأسبوع</small><strong id="modalWeekStat">٠ س ٠ د</strong></div><div><small>الإجمالي</small><strong id="modalTotalStat">٠ س ٠ د</strong></div><div><small>الترتيب</small><strong id="modalRankStat">#1</strong></div></div><div class="stats-chart-card"><div class="chart-title">نشاط الدراسة</div><div class="fake-bars" id="fakeBars"></div></div></div></div>
+
+</main><script src="app.js"></script></body></html>
